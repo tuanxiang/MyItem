@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	
+	
+	<body>
+		<script>
+		/*字符串的方法
+	 	charAt()//参数必须为下标数字，返回对应的字符
+	 	charCodeAt()//参数是下标，返回对应字符的unicode 编码
+	 	substing()//参数是数字，一个参数代表截取从下标位置到结尾的字符
+	 				两个参数，代表截取两个字符对应差长度的字符			
+	 	substr 同上 slice
+	 	
+	 	split()参数是一个分隔符，用这个参数来切割字符串，返回的是数组，   Array的jion()是把数组拼接成字符串返回 。返回值是字符串
+	 	indexOf() 参数是字符，用来查找字符串中某个字符的位置，返回数字，没有查找到返回-1
+	 	lastIndexOf() 参数是字符，从最后查找某个字符，返回值是Nuber 没有返回-1
+	 	
+	 	toLowerCase() 没有参数，把字符串转换成小写，反回值是对应的小写
+	 	toUpperCase() 没有参数，把字符转换成大写 ，返回对应的大写
+	 	
+	 	search() 参数是字符 或 正则表达式  返回值是数组，用来查找字符串的子集 下标 没找到返回-1
+	 	macth() 参数是正则表达式，返回会匹配到的字符的数组 没有匹配到返回值是null
+	 	replace() 第一个参数参数是正则表达式，第一个参数是字符||函数     。返回值是 替换好的字符
+	 	*/	
+		//实例1判断数字中存在数字
+		/*
+		 正则表达式 RegExp 
+		 	test() 检测字符能不能被正则匹配  返回值是true 或者false
+		 * */
+			var str = 'dh1sids8a23 d21 32dsaxzd89wej1kl7qw9';
+			//
+			/*
+			 * 要求1查找其中数字
+			 * 1.遍历字符串中每个字符，把是数字的放到数组中
+			 * Number() 参数是空格字符串或者空字符串返回值为0，isNaN（）为false，
+			 * parseInt()参数是空字符串返回值是NaN
+			 * 2.为什么要用parseInt()
+//			 */
+//             var arr=[];
+//				for(var i=0;i<str.length;i++){
+//					if(!isNaN(parseInt(str[i]))){
+//						arr.push(str[i]);
+//					}
+//				}
+//				console.log(arr);
+			//要求2 查找其中连续的不需要拆开
+			/*
+			 1.遍历字符串，声明一个中间变量temp='';
+			 	用来记录连续的值
+			 	var temp=1,
+			 	temp+=2
+			 	temp='';
+			 * */
+//			var arr=[];
+//			var temp='';
+//			for(var i=0;i<str.length;i++){
+//				if(!isNaN(parseInt(str[i]))){
+//					temp+=str[i];
+//				}else{
+//					if(temp){
+//						arr.push(temp);
+//						temp='';
+//					}	
+//				}
+//			}
+//			if(temp){
+//				arr.push(temp);
+//			}
+			//方法三	
+			var arr=str.match(/\d+/g);
+			console.log(arr);
+		</script>
+	</body>
+</html>
