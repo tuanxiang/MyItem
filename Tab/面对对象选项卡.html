@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+ #box div,#box2 div{
+	width:200px;
+	height:100px;
+	border: 1px solid #000;
+	display: none;
+}
+
+#box div.show,#box2 div.show{
+	display: block;
+}
+.active{
+	background: yellow;
+}
+</style>
+</head>
+<body>
+	<div id="box">
+		<input type="button" id="" value="按钮一" class="active"/>
+		<input type="button" id="" value="按钮二" />
+		<input type="button" id="" value="按钮三" />
+		<div class="show">内容一</div>
+		<div>内容二</div>
+		<div>内容三</div>
+	</div>
+	<div id="box2">
+		<input type="button" id="" value="按钮一" class="active"/>
+		<input type="button" id="" value="按钮二" />
+		<input type="button" id="" value="按钮三" />
+		<div class="show">内容一</div>
+		<div>内容二</div>
+		<div>内容三</div>
+	</div>
+<script type="text/javascript">
+	//只要碰到function  this就有可能变
+	 class Tab{
+	 	constructor(id){
+	 		this.box=document.getElementById(id);
+	 		this.inputs=this.box.getElementsByTagName('input');
+	 		this.divs=this.box.getElementsByTagName('div');
+	 	}
+	 	init(events){
+	 		let _this=this;
+	 		for(let i=0;i<this.inputs.length;i++){
+	 			this.inputs[i].addEventListener(events,function(){
+	 				_this.clickFn(this,i);
+	 			})
+	 		}
+	 	}
+	 	clickFn(that,index){
+	 		for(let i=0;i<this.inputs.length;i++){
+	 			this.inputs[i].className='';
+	 			this.divs[i].className='';
+	 		}
+	 		that.className='active';
+	 		this.divs[index].className='show';
+	 	}
+	 }
+	 var t=new Tab('box');
+	 	t.init('click');
+	 	
+	var t2=new Tab('box2');
+		t2.init('mouseover')
+	
+	
+</script>
+</body>
+</html>
